@@ -28,7 +28,7 @@ def prepare_data(path):
     df_cleaned = {'Input_Text': [], 'Solution': []}
     
     for k, r in df.iterrows():
-        pass # TODO: Implement this for loop 
+        df_cleaned[k] = r # TODO: Implement this for loop 
     
     df_cleaned = pd.DataFrame(df_cleaned)
     return df_cleaned
@@ -46,13 +46,20 @@ def use_calculator(num1, num2, operation):
     
     Consider using if statements to check the operation and perform the correct calculation.
     '''
-    raise NotImplementedError # TODO: implement this function
+    if operation == 'add':
+        return int(num1) + int(num2)
+    if operation == 'subtract':
+        return int(num1) - int(num2)
+    if operation == 'multiply':
+        return int(num1) * int(num2)
+    else:
+        raise NotImplementedError # TODO: implement this function
 
 def api_key():
     # This function should return your Hugging Face API key.
     # this will allow the autograder to pull your model from the hub.
     # if it cannot pull your model from the hub, your assignment will be graded as 0.
-    key = None # TODO: implement this function
+    key = "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" # TODO: implement this function
     
     return key
 
@@ -60,7 +67,7 @@ def hub_model_name():
     # This function should return the name of the model push to the Hugging Face Hub.
     # it should be in the format of 'username/modelname'
     # if the autograder cannot pull your model from the hub, your assignment will be graded as 0.
-    model_name = None # TODO: implement this function
+    model_name = 'LucyZihan/model_name' # TODO: implement this function
     return model_name
 
 # NO NEED TO MODIFY THIS FUNCTION

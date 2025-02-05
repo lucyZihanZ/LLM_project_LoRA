@@ -7,7 +7,6 @@ from trl import SFTTrainer, DataCollatorForCompletionOnlyLM
 import pandas as pd
 
 # There are a total of 5 TODOs in this file.
-# great
 
 @dataclass
 class SFTConfig:
@@ -23,7 +22,7 @@ class SFTConfig:
         target_modules=['q_proj', 'v_proj', 'k_proj'],
         lora_dropout=0.05,
         bias="none",
-        task_type="" # TODO: you need to figure this out. HINT https://github.com/huggingface/peft/blob/3d2bf9a8b261ed2960f26e61246cf0aa624a6115/src/peft/utils/peft_types.py#L67
+        task_type="QUESTION_ANS" # TODO: you need to figure this out. HINT https://github.com/huggingface/peft/blob/3d2bf9a8b261ed2960f26e61246cf0aa624a6115/src/peft/utils/peft_types.py#L67
     )
         
     training_args = TrainingArguments(
@@ -31,9 +30,9 @@ class SFTConfig:
         gradient_accumulation_steps=2,
         gradient_checkpointing =False,
         max_grad_norm= 0.3,
-        num_train_epochs=1, # TODO: play with this number 
+        num_train_epochs=10, # TODO: play with this number 
         save_steps= 100,
-        learning_rate=1, # TODO: play with this number 
+        learning_rate=0.001, # TODO: play with this number 
         bf16=True,
         save_total_limit=3,
         logging_steps=10,
