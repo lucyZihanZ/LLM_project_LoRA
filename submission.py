@@ -47,14 +47,10 @@ def use_calculator(num1, num2, operation):
     
     Consider using if statements to check the operation and perform the correct calculation.
     '''
-    if operation == 'add':
-        return int(num1) + int(num2)
-    if operation == 'subtract':
-        return int(num1) - int(num2)
-    if operation == 'multiply':
-        return int(num1) * int(num2)
-    else:
-        raise NotImplementedError # TODO: implement this function
+    num1, num2 = int(num1), int(num2)
+    
+    if operation in OPERATIONS:
+        return eval(f"{num1} {OPERATIONS[operation]} {num2}")
 
 def api_key():
     # This function should return your Hugging Face API key.
