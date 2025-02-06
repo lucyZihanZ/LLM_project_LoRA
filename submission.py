@@ -28,7 +28,8 @@ def prepare_data(path):
     df_cleaned = {'Input_Text': [], 'Solution': []}
     
     for k, r in df.iterrows():
-        df_cleaned[k] = r # TODO: Implement this for loop 
+        df_cleaned['Input_Text'].append(f"What is {r['num1']} {OPERATIONS[r['operation']]} {r['num2']}?")  
+        df_cleaned['Solution'].append(f'use_calculator({r["num1"]}, {r["num2"]}, "{r["operation"]}")') 
     
     df_cleaned = pd.DataFrame(df_cleaned)
     return df_cleaned
@@ -59,7 +60,7 @@ def api_key():
     # This function should return your Hugging Face API key.
     # this will allow the autograder to pull your model from the hub.
     # if it cannot pull your model from the hub, your assignment will be graded as 0.
-    key = "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" # TODO: implement this function
+    key = "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" # TODO: implement this function
     
     return key
 
@@ -67,7 +68,7 @@ def hub_model_name():
     # This function should return the name of the model push to the Hugging Face Hub.
     # it should be in the format of 'username/modelname'
     # if the autograder cannot pull your model from the hub, your assignment will be graded as 0.
-    model_name = 'LucyZihan/model_name' # TODO: implement this function
+    model_name = 'LucyZihan/sft-calculator' # TODO: implement this function
     return model_name
 
 # NO NEED TO MODIFY THIS FUNCTION

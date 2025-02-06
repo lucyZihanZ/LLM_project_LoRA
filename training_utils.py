@@ -17,7 +17,7 @@ class SFTConfig:
     hf_key: str = ''
 
     peft_config = LoraConfig(
-        r=1, # TODO: play with this number 
+        r=2, # TODO: play with this number 
         lora_alpha=16, # TODO: play with this number 
         target_modules=['q_proj', 'v_proj', 'k_proj'],
         lora_dropout=0.05,
