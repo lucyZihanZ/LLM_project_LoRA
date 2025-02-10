@@ -1,0 +1,21 @@
+import random
+import numpy as np
+def get_number():
+    num1 = np.random.rand(100000, 999999)
+    num2 = np.random.rand(100000, 999999)
+    num_total = num1 + num2
+    return num1, num2, num_total
+
+data  = {
+    'num1': [],
+    'num2':[],
+    'num_total': []
+}
+for i in range(20):
+    num1, num2, num_total = get_number()
+    data['num1'].append(num1)
+    data['num2'].append(num2)
+    data['num_total'].append(num_total)
+
+print(data)
+

@@ -12,17 +12,17 @@ import pandas as pd
 class SFTConfig:
     sft_model_name: str = 'facebook/opt-350m'
     sft_dataset_path: str = 'train.csv'
-    sft_model_cache_dir: str = 'cache'
+    sft_model_cache_dir: str = ''
     sft_output_dir: str = '.'
     hf_key: str = ''
 
     peft_config = LoraConfig(
-        r=2, # TODO: play with this number 
+        r=8, # TODO: play with this number 
         lora_alpha=16, # TODO: play with this number 
         target_modules=['q_proj', 'v_proj', 'k_proj'],
         lora_dropout=0.05,
         bias="none",
-        task_type="QUESTION_ANS" # TODO: you need to figure this out. HINT https://github.com/huggingface/peft/blob/3d2bf9a8b261ed2960f26e61246cf0aa624a6115/src/peft/utils/peft_types.py#L67
+        task_type="CAUSAL_LM" # TODO: you need to figure this out. HINT https://github.com/huggingface/peft/blob/3d2bf9a8b261ed2960f26e61246cf0aa624a6115/src/peft/utils/peft_types.py#L67
     )
         
     training_args = TrainingArguments(
@@ -32,7 +32,7 @@ class SFTConfig:
         max_grad_norm= 0.3,
         num_train_epochs=10, # TODO: play with this number 
         save_steps= 100,
-        learning_rate=0.001, # TODO: play with this number 
+        learning_rate=0.0005, # TODO: play with this number 
         bf16=True,
         save_total_limit=3,
         logging_steps=10,
