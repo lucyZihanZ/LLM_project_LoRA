@@ -32,7 +32,7 @@ class SFTConfig:
         max_grad_norm= 0.3,
         num_train_epochs=10, # TODO: play with this number 
         save_steps= 100,
-        learning_rate=0.0005, # TODO: play with this number 
+        learning_rate=0.001, # TODO: play with this number 
         bf16=True,
         save_total_limit=3,
         logging_steps=10,

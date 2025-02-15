@@ -28,7 +28,7 @@ def prepare_data(path):
     df_cleaned = {'Input_Text': [], 'Solution': []}
     
     for k, r in df.iterrows():
-        df_cleaned['Input_Text'].append(f'What is {r['num1']} {OPERATIONS[r['operation']]} {r['num2']}?')  
+        df_cleaned['Input_Text'].append(f"What is {r['num1']} {OPERATIONS[r['operation']]} {r['num2']}?") 
         df_cleaned['Solution'].append(f'use_calculator({r["num1"]}, {r["num2"]}, "{r["operation"]}")') 
     
     df_cleaned = pd.DataFrame(df_cleaned)
@@ -48,14 +48,8 @@ def use_calculator(num1, num2, operation):
     Consider using if statements to check the operation and perform the correct calculation.
     '''
     num1, num2 = int(num1), int(num2)
-    if operation == 'add':
-        return num1 + num2
-    if operation == 'subtract':
-        return num1 - num2
-    if operation == 'multiply':
-        return num1 * num2
-    else:
-        raise NotImplementedError
+    if operation in OPERATIONS:
+        return eval(f"{num1} {OPERATIONS[operation]} {num2}")
 
 def api_key():
     # This function should return your Hugging Face API key.
